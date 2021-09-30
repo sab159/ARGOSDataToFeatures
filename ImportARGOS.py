@@ -10,3 +10,6 @@
 ## Author: sophia.bryson@duke.edu (for ENV859)
 ##---------------------------------------------------------------------
 
+# Import modules
+import sys, os, arcpy #useful overall modules for general use
+
