@@ -13,16 +13,25 @@
 # Import modules
 import sys, os, arcpy
 
-#Allow outputs to be overwritten
-arcpy.env.overwriteOutput = True
-
 # Set input variables (Hard-wired)
 inputFile = 'V:/ARGOSTracking/Data/ARGOSData/1997dg.txt'
 outputFC = "V:/ARGOSTracking/Scratch/ARGOStrack.shp"
 
 #%% Create Feature Class to which we will add features
+
+# Allow outputs to be overwritten
+arcpy.env.overwriteOutput = True
+
+# Add spatial reference 
+#   + Need to create spatial reference object
+#   + Set to global equidistant, but allow user to override
+#   + Equidistant Cylindrical Sphere - wkid = 53002
+outputSR = arcpy.SpatialReference(53002) #spatial ref
+
+# Designate Feature Class
 outPath, outFile = os.path.split(outputFC) #need to parse path from name - splits resultant tuple into to variables
-arcpy.management.CreateFeatureclass(outPath, outFile) 
+arcpy.management.CreateFeatureclass(out_path = outPath, out_name = outFile, 
+                                    geometry_type = "POINT", spatial_reference = outputSR) 
 
 
 #%% Construct a while loop and iterate through all lines in the data file
