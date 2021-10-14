@@ -33,6 +33,11 @@ outPath, outFile = os.path.split(outputFC) #need to parse path from name - split
 arcpy.management.CreateFeatureclass(out_path = outPath, out_name = outFile, 
                                     geometry_type = "POINT", spatial_reference = outputSR) 
 
+# Add Attributes - TagID, LC, IQ, and Date fields to the output feature class
+arcpy.management.AddField(outputFC,"TagID","LONG")
+arcpy.management.AddField(outputFC,"LC","TEXT")
+arcpy.management.AddField(outputFC,"Date","DATE")
+
 
 #%% Construct a while loop and iterate through all lines in the data file
 # Open the ARGOS data file
