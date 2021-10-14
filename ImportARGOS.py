@@ -26,7 +26,7 @@ arcpy.env.overwriteOutput = True
 #   + Need to create spatial reference object
 #   + Set to global equidistant, but allow user to override
 #   + Equidistant Cylindrical Sphere - wkid = 53002
-outputSR = arcpy.SpatialReference(53002) #spatial ref
+outputSR = arcpy.SpatialReference(54002) #spatial ref
 
 # Designate Feature Class
 outPath, outFile = os.path.split(outputFC) #need to parse path from name - splits resultant tuple into to variables
